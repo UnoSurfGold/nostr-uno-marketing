@@ -1,0 +1,94 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  /** Identity theme — 'rotate' picks at load time client-side, otherwise locks to one. */
+  identity?: 'social' | 'work' | 'anon' | 'dev' | 'rotate';
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og/default.svg',
+  identity = 'rotate',
+  canonical,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonicalUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+const absoluteOg = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Server-render: default to identity-social; client rotator may swap.
+const initialClass = identity === 'rotate' ? 'identity-social' : `identity-${identity}`;
+---
+
+<!doctype html>
+<html lang="en" class={initialClass} data-identity-mode={identity}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#111111" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nostr Uno" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={absoluteOg} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOg} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Preconnect to Google Fonts (if used) — keep light, fall back to system -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script is:inline>
+      // Identity-color rotator — Apollo nod to "many selves".
+      // Only swaps when the page opts in via data-identity-mode="rotate".
+      (function rotateIdentity() {
+        const html = document.documentElement;
+        if (html.dataset.identityMode !== 'rotate') return;
+        const palette = ['identity-social', 'identity-work', 'identity-anon', 'identity-dev'];
+        // Stable per-session pick so navigation feels consistent
+        let chosen = sessionStorage.getItem('uno-identity');
+        if (!chosen || !palette.includes(chosen)) {
+          chosen = palette[Math.floor(Math.random() * palette.length)];
+          try { sessionStorage.setItem('uno-identity', chosen); } catch (_) {}
+        }
+        palette.forEach((c) => html.classList.remove(c));
+        html.classList.add(chosen);
+      })();
+    </script>
+  </body>
+</html>
