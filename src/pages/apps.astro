@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface AppCard {
+  name: string;
+  tagline: string;
+  description: string;
+  href: string;
+  comingSoon?: boolean;
+  category: 'social' | 'civic' | 'identity' | 'tools' | 'commerce';
+}
+
+const apps: AppCard[] = [
+  {
+    name: 'TNR',
+    tagline: 'Civic identity for the territorial network.',
+    description: 'The Network Republic. Citizenship, governance, and territory on Nostr. Sign in with your Civic identity from Uno.',
+    href: 'https://tnr.gold',
+    category: 'civic',
+  },
+  {
+    name: 'nostr.surf',
+    tagline: 'Discovery feed for the Nostr ecosystem.',
+    description: 'A curated, contextual feed of what is happening across Nostr. Built on the same identity stack as Uno.',
+    href: 'https://nostr.surf',
+    category: 'social',
+  },
+  {
+    name: 'nostr.gold',
+    tagline: 'Premium identity services and Lightning.',
+    description: 'NIP-05 verification, Lightning addresses, and identity-grade tooling. Pairs with Uno for personal-grade key management.',
+    href: 'https://nostr.gold',
+    category: 'identity',
+  },
+  {
+    name: 'Signstr',
+    tagline: 'Sign documents with your Nostr identity.',
+    description: 'Document signing where your cryptographic identity is the signature. Coming after Wave 2 ships.',
+    href: '#',
+    category: 'tools',
+    comingSoon: true,
+  },
+];
+
+// External apps that already support NIP-46 — visible after R-SDK Wave 2 dogfood.
+const externalApps = [
+  { name: 'Stacker News', note: 'NIP-46 integration via uno-connect (post-Wave 2)' },
+  { name: 'Damus', note: 'NIP-46 integration via uno-connect (post-Wave 2)' },
+  { name: 'Primal', note: 'NIP-46 integration via uno-connect (post-Wave 2)' },
+];
+---
+
+<BaseLayout
+  title="Apps — The Nostr Uno ecosystem"
+  description="Apps that work with Nostr Uno: TNR, nostr.surf, nostr.gold, Signstr, and the wider Nostr ecosystem via NIP-46."
+  identity="work"
+>
+  <section class="mx-auto max-w-5xl px-6 pt-20 pb-12">
+    <span class="badge-powered">Powered by Uno</span>
+    <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance leading-tight">
+      One identity stack.<br />Many apps.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
+      Apps that integrate Uno&rsquo;s identity primitives directly &mdash; either built on the same stack or signed in via NIP-46. Your selves travel with you.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-8">
+    <div class="grid gap-5 md:grid-cols-2">
+      {apps.map((app) => (
+        <a
+          href={app.href}
+          class="card block group"
+          target={app.comingSoon ? undefined : '_blank'}
+          rel={app.comingSoon ? undefined : 'noopener'}
+          data-coming-soon={app.comingSoon ? 'true' : undefined}
+        >
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div>
+              <div class="text-lg font-semibold">{app.name}</div>
+              <div class="text-sm text-[var(--muted-foreground)]">{app.tagline}</div>
+            </div>
+            <span class="badge-powered shrink-0">{app.category}</span>
+          </div>
+          <p class="mt-3 text-sm text-[var(--muted-foreground)] leading-relaxed">{app.description}</p>
+          {!app.comingSoon && (
+            <div class="mt-4 text-sm">
+              <span class="link-accent">Visit &rarr;</span>
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-12 border-t border-[var(--border)] mt-8">
+    <h2 class="text-2xl font-semibold tracking-tight">Connect to any Nostr app.</h2>
+    <p class="mt-3 text-[var(--muted-foreground)] max-w-2xl">
+      Uno is a NIP-46 signer. That means any Nostr app that supports remote signing can pair with your Uno identities &mdash; just scan a QR code.
+      Integrations for the apps below ship after our SDK lands in Wave 2.
+    </p>
+    <div class="mt-6 grid gap-3 md:grid-cols-3">
+      {externalApps.map((ext) => (
+        <div class="card" data-coming-soon="true">
+          <div class="font-medium">{ext.name}</div>
+          <div class="text-xs text-[var(--muted-foreground)] mt-1">{ext.note}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-16">
+    <div class="card text-center">
+      <h3 class="text-xl font-semibold">Building a Nostr app?</h3>
+      <p class="mt-2 text-[var(--muted-foreground)]">
+        Adopt Uno&rsquo;s SDK and your users get multi-identity for free.
+      </p>
+      <div class="mt-5">
+        <a href="/developers" class="btn-secondary">For developers</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

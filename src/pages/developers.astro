@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Developers — Build with Nostr Uno"
+  description="SDK, docs, and integration guide for connecting your Nostr app to Uno's multi-identity signer."
+  identity="dev"
+>
+  <section class="mx-auto max-w-4xl px-6 pt-20 pb-12">
+    <span class="badge-powered">For builders</span>
+    <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance leading-tight">
+      Plug Uno into your app.<br />Your users bring their selves.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
+      Uno is a NIP-46 signer with a friendly SDK. Add a "Sign in with Uno" button and your app gets
+      multi-identity, biometric unlock, and per-identity permissions out of the box.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="https://docs.nostr.uno" class="btn-primary">Read the docs</a>
+      <a href="https://github.com/UnoSurfGold/uno-connect" class="btn-secondary" target="_blank" rel="noopener">
+        GitHub
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M5 9l4-4M9 5v4H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-12 grid gap-6 md:grid-cols-3">
+    <div class="card">
+      <h3 class="font-semibold mb-2">NIP-46 first</h3>
+      <p class="text-sm text-[var(--muted-foreground)]">
+        Standard remote signing. No proprietary extension. Your app works with Uno
+        and any other NIP-46 signer.
+      </p>
+    </div>
+    <div class="card">
+      <h3 class="font-semibold mb-2">Per-identity permissions</h3>
+      <p class="text-sm text-[var(--muted-foreground)]">
+        Users choose which identity to share with your app, and which event kinds
+        you can sign. Granular by design.
+      </p>
+    </div>
+    <div class="card">
+      <h3 class="font-semibold mb-2">Free and open</h3>
+      <p class="text-sm text-[var(--muted-foreground)]">
+        MIT-licensed. No fees, no rate limits, no lock-in. We win when the
+        ecosystem wins.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-4">Documentation</h2>
+    <p class="text-[var(--muted-foreground)] max-w-2xl">
+      Full SDK reference, integration guides, and example apps live at <a href="https://docs.nostr.uno" class="link-accent">docs.nostr.uno</a>.
+      Source for the connect SDK is at <a href="https://github.com/UnoSurfGold/uno-connect" class="link-accent">github.com/UnoSurfGold/uno-connect</a>.
+    </p>
+    <p class="mt-4 text-sm text-[var(--muted-foreground)]">
+      Both ship alongside the Wave 2 SDK release. Marketing site is live first so you can read why before the code lands.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-16 border-t border-[var(--border)]">
+    <h2 class="text-2xl font-semibold tracking-tight mb-6">Quick taste</h2>
+    <div class="card font-mono text-xs md:text-sm overflow-x-auto">
+      <pre class="leading-relaxed"><code><span style="color: var(--identity-color)">import</span> &#123; connectToUno &#125; <span style="color: var(--identity-color)">from</span> <span style="color: var(--muted-foreground)">'@uno/connect'</span>;
+
+<span style="color: var(--identity-color)">const</span> session = <span style="color: var(--identity-color)">await</span> connectToUno(&#123;
+  appName: <span style="color: var(--muted-foreground)">'My Nostr App'</span>,
+  permissions: [<span style="color: var(--muted-foreground)">'sign_event:1'</span>, <span style="color: var(--muted-foreground)">'nip04_encrypt'</span>],
+&#125;);
+
+<span style="color: var(--muted-foreground)">// User picks which identity to share; you get a signer.</span>
+<span style="color: var(--identity-color)">const</span> signed = <span style="color: var(--identity-color)">await</span> session.signEvent(event);</code></pre>
+    </div>
+    <p class="mt-4 text-xs text-[var(--muted-foreground)]">
+      Snippet illustrative; final API may shift before Wave 2.
+    </p>
+  </section>
+</BaseLayout>
