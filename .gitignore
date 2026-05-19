@@ -22,4 +22,5 @@ pnpm-debug.log*
 
 # lighthouse
 lighthouse-report.json
+lighthouse-reports/
 .lighthouseci/

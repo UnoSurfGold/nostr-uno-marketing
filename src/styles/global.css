@@ -38,9 +38,10 @@
   --card-foreground: oklch(100% 0 0);
 
   --muted: oklch(25% 0 0);
-  --muted-foreground: oklch(75% 0.01 90);
+  /* Bumped from 75% to 85% for WCAG AA contrast against --background (15%) and --card (18%) */
+  --muted-foreground: oklch(85% 0.01 90);
 
-  --border: oklch(25% 0 0);
+  --border: oklch(30% 0 0);
   --input: oklch(25% 0 0);
   --ring: oklch(50% 0 0);
 
@@ -91,10 +92,10 @@ body {
 }
 
 body {
-  font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
   background-color: var(--background);
   color: var(--foreground);
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -174,13 +175,24 @@ body {
   gap: 0.4rem;
   padding: 0.25rem 0.6rem;
   border-radius: 9999px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  background-color: var(--identity-tint);
-  color: var(--identity-color);
+  /* Solid contrast: identity color text on dark muted background. Avoids
+     OKLCH-tint overlay failing WCAG when identity is a darker hue (blue/purple). */
+  background-color: var(--muted);
+  color: var(--foreground);
   border: 1px solid var(--identity-color);
+  box-shadow: inset 0 0 0 9999px transparent;
+}
+.badge-powered::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--identity-color);
+  display: inline-block;
 }
 
 /* Subtle hero glow — uses identity color, 20% opacity to match design system spec */
@@ -193,6 +205,18 @@ body {
     var(--identity-glow),
     transparent 60%
   );
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .prose-marketing p {

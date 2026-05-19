@@ -58,13 +58,9 @@ const initialClass = identity === 'rotate' ? 'identity-social' : `identity-${ide
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Preconnect to Google Fonts (if used) — keep light, fall back to system -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    />
+    <!-- System font stack — no network calls, instant FCP.
+         On iOS this is SF Pro, on macOS Geneva/Helvetica Neue, on Android Roboto.
+         All read close enough to Geist for marketing copy. -->
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
