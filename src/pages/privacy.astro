@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-05-12';
+---
+
+<BaseLayout
+  title="Privacy — Nostr Uno"
+  description="What Nostr Uno can see, what it cannot, and how each identity feature handles your data."
+  identity="anon"
+>
+  <article class="mx-auto max-w-3xl px-6 py-20">
+    <span class="badge-powered">Privacy</span>
+    <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance leading-tight">
+      What we see. What we don't.
+    </h1>
+    <p class="mt-3 text-sm text-[var(--muted-foreground)]">Last updated {updated}</p>
+
+    <div class="prose-marketing mt-10">
+      <p>
+        Nostr Uno is a key manager. The whole point is that your keys never
+        leave your control. This page walks through every piece of data the app
+        touches and tells you exactly what we can and cannot see.
+      </p>
+
+      <h2>Identity keys</h2>
+      <p>
+        Your master seed and every derived private key live <strong>on your
+        device only</strong>, encrypted at rest. We never see them. We cannot
+        recover them for you. If you lose your seed phrase and your device, the
+        keys are gone.
+      </p>
+
+      <h2>Persona sync (opt-in)</h2>
+      <p>
+        Personas &mdash; the friendly metadata around an identity (name, avatar,
+        color, app preferences) &mdash; can optionally sync across your devices via
+        an encrypted relay (<code>khatru-uno</code>). The encryption key is
+        derived from your seed. The relay sees only ciphertext.
+      </p>
+      <p>
+        This is off by default. You turn it on per identity. Nothing about your
+        personas leaves your device unless you explicitly enable sync.
+      </p>
+
+      <h2>Email aliases</h2>
+      <p>
+        If you create an alias address (e.g. <code>you@nostr.uno</code>), inbound
+        mail is forwarded through Cloudflare Email Routing and Resend to a
+        destination you specify. We retain forwarding metadata (sender, timestamp,
+        size) for debugging but do not store the body of forwarded messages.
+        Plain-text content is never persisted on our infrastructure.
+      </p>
+
+      <h2>Lightning wallet</h2>
+      <p>
+        Each identity can hold its own Lightning wallet. We do not custody funds.
+        Wallets are non-custodial; you hold the keys, and you can export them at
+        any time.
+      </p>
+
+      <h2>What we never have access to</h2>
+      <ul>
+        <li>Private keys (nsec / seed phrase)</li>
+        <li>Plaintext of encrypted persona sync data</li>
+        <li>Plaintext bodies of forwarded alias emails (beyond the brief in-transit forwarding window)</li>
+        <li>The contents of events signed for third-party apps via NIP-46</li>
+        <li>Your contacts list, unless you opt into persona sync</li>
+      </ul>
+
+      <h2>What we do see</h2>
+      <ul>
+        <li>Public-side metadata you publish to Nostr relays (by design &mdash; that's how Nostr works)</li>
+        <li>Aggregate, non-identifying usage stats on the marketing site (page views, no fingerprinting)</li>
+        <li>Forwarding metadata for alias emails (sender, time, size &mdash; never body)</li>
+        <li>Support correspondence you choose to send us</li>
+      </ul>
+
+      <h2>Third parties</h2>
+      <p>
+        We use Cloudflare for hosting and email routing, Resend for transactional
+        email delivery, and (if you opt in) Khatru for encrypted persona sync.
+        None of these have access to your keys or unencrypted persona data.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Privacy questions: <a href="mailto:support@nostr.uno" class="link-accent">support@nostr.uno</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

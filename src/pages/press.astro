@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const brandColors = [
+  { name: 'Social', oklch: 'oklch(70% 0.18 55)', hex: '#FF8400' },
+  { name: 'Work', oklch: 'oklch(70% 0.15 250)', hex: '#5B8DEF' },
+  { name: 'Anon', oklch: 'oklch(70% 0.15 300)', hex: '#B07ED9' },
+  { name: 'Dev', oklch: 'oklch(70% 0.18 145)', hex: '#3FCD7A' },
+  { name: 'Background', oklch: 'oklch(15% 0 0)', hex: '#111111' },
+];
+---
+
+<BaseLayout
+  title="Press — Nostr Uno"
+  description="Press kit for Nostr Uno: logos, brand colors, founder bio, and media inquiries."
+  identity="social"
+>
+  <section class="mx-auto max-w-4xl px-6 pt-20 pb-10">
+    <span class="badge-powered">Press kit</span>
+    <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance leading-tight">
+      Assets, story, contact.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
+      Everything you need to write about Uno. If you want something we don't have, ask.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="text-2xl font-semibold mb-6">The pitch (one paragraph)</h2>
+    <p class="text-[var(--muted-foreground)] leading-relaxed">
+      <strong class="text-[var(--foreground)]">Nostr Uno</strong> is a multi-identity key manager and NIP-46 signer
+      for the Nostr protocol. It lets one person hold many cryptographic identities &mdash; work, social, anonymous,
+      whatever you become &mdash; all derived from one seed phrase, all switchable in a single swipe. The app
+      treats identity as a primitive, not a chore: no &ldquo;write down twelve words right now&rdquo; ceremony, no
+      browser extensions, no platform lock-in. Free, open source, available on iOS, Android, and web.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="text-2xl font-semibold mb-6">Logo</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card flex items-center justify-center h-32">
+        <span class="w-14 h-14 rounded-full grid place-items-center" style="background: var(--identity-color); color: var(--primary-foreground);">
+          <span class="text-xl font-bold leading-none">U</span>
+        </span>
+      </div>
+      <div class="card flex items-center justify-center h-32" style="background: #fff;">
+        <span class="w-14 h-14 rounded-full grid place-items-center" style="background: #111; color: #fff;">
+          <span class="text-xl font-bold leading-none">U</span>
+        </span>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-[var(--muted-foreground)]">
+      SVG files: <a href="/press/logo-dark.svg" class="link-accent">logo-dark.svg</a> &middot;
+      <a href="/press/logo-light.svg" class="link-accent">logo-light.svg</a>
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="text-2xl font-semibold mb-6">Brand colors</h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      {brandColors.map((c) => (
+        <div class="card !p-3">
+          <div class="h-16 rounded-md mb-3" style={`background: ${c.oklch}`}></div>
+          <div class="text-sm font-semibold">{c.name}</div>
+          <div class="text-xs text-[var(--muted-foreground)] mt-1 font-mono">{c.hex}</div>
+          <div class="text-[10px] text-[var(--muted-foreground)] font-mono">{c.oklch}</div>
+        </div>
+      ))}
+    </div>
+    <p class="mt-4 text-sm text-[var(--muted-foreground)]">
+      Identity colors are defined in OKLCH for perceptual uniformity. All have ~70% lightness so they balance visually.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-10">
+    <h2 class="text-2xl font-semibold mb-6">Founder</h2>
+    <div class="card">
+      <p class="text-[var(--muted-foreground)] leading-relaxed">
+        Bio coming soon. Reach out and we'll send it directly.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-6 py-12 border-t border-[var(--border)]">
+    <h2 class="text-2xl font-semibold mb-4">Media inquiries</h2>
+    <p class="text-[var(--muted-foreground)]">
+      Email <a href="mailto:press@nostr.uno" class="link-accent">press@nostr.uno</a> or DM
+      <a href="https://t.me/NostrSupportBot" class="link-accent" target="_blank" rel="noopener">@NostrSupportBot</a> on Telegram.
+    </p>
+  </section>
+</BaseLayout>
