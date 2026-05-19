@@ -27,10 +27,26 @@ npm run preview
 
 ## Deploy
 
-Pushes to `main` auto-deploy via Cloudflare Pages project `nostr-uno-marketing`.
+CF Pages project: **`nostr-uno-marketing`**
+Production URL: **https://nostr-uno-marketing.pages.dev**
 
-**Phase A** (current): served at the auto-assigned `*.pages.dev` URL.
+Deploys are currently triggered via `wrangler pages deploy dist --project-name=nostr-uno-marketing`.
+Hooking up GitHub auto-deploys is a follow-up (do via CF dashboard once stable).
+
+**Phase A** (current): served at the auto-assigned `*.pages.dev` URL. No custom domain.
 **Phase B** (deferred): DNS cutover — `nostr.uno` apex points here, PWA moves to `app.nostr.uno`. Requires real-device screenshots first.
+
+### Lighthouse gate (run before deploy)
+
+```bash
+npm run build
+# deploy preview, then for each page:
+./node_modules/.bin/lighthouse https://nostr-uno-marketing.pages.dev/ \
+  --quiet --chrome-flags="--headless=new" \
+  --only-categories=performance,accessibility,best-practices,seo
+```
+
+Latest scores (2026-05-12): Perf 98-100 / A11y 100 / BP 100 / SEO 100 on all 6 pages.
 
 ## Project links
 
