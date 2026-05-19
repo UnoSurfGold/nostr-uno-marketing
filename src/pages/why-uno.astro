@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Why Uno — The multi-identity story"
+  description="Why one identity isn't enough on the open internet, and how Uno makes many selves usable."
+  identity="social"
+>
+  <article class="mx-auto max-w-3xl px-6 py-20">
+    <span class="badge-powered">The Apollo Principle</span>
+    <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight text-balance leading-tight">
+      You're already multiple people.<br />Your software should know.
+    </h1>
+
+    <div class="prose-marketing mt-10">
+      <p>
+        You're a different person at work than you are with friends. A different
+        person on a dating app than you are on LinkedIn. A different person when
+        you're being playful, professional, political, or private.
+      </p>
+      <p>
+        The internet pretends otherwise. One Google account. One Twitter handle.
+        One email that's tied to your tax returns <em>and</em> your meme account.
+        When something goes wrong &mdash; a leak, a ban, a context collapse &mdash;
+        every part of your life is exposed at once.
+      </p>
+
+      <h2>The password manager moment</h2>
+      <p>
+        Before 1Password, most people reused the same password everywhere. They
+        knew it was bad. They did it anyway, because managing dozens of unique
+        passwords was impossible by hand.
+      </p>
+      <p>
+        Then a tool made it easy. Now nobody thinks twice about having a hundred
+        unique passwords. The behaviour shifted because the friction disappeared.
+      </p>
+      <p>
+        <strong>Uno is that for identity.</strong> One master key. Many derived
+        selves. Switching between them is one swipe, not a logout flow.
+      </p>
+
+      <h2>What "identity" actually means here</h2>
+      <p>
+        Nostr is a cryptographic protocol. An identity is a key pair you control.
+        That sounds technical, but the practical effect is simple:
+      </p>
+      <ul>
+        <li>Nobody can take your account away from you.</li>
+        <li>Your followers, your posts, your reputation live <em>with</em> your key &mdash; not on a server.</li>
+        <li>You can use the same identity across every Nostr app that exists.</li>
+        <li>You can have <strong>different identities</strong> for different parts of your life, and no app can tell they're the same person.</li>
+      </ul>
+
+      <h2>The mental model: one seed, many lives</h2>
+      <p>
+        When you create your first identity in Uno, we silently generate a
+        twelve-word seed phrase and derive a key from it. No ceremony. No
+        "write this down or you'll lose everything." Just a working identity in
+        under a minute.
+      </p>
+      <p>
+        Later &mdash; when you decide you want a separate work persona, or an anonymous
+        outlet, or a shared identity for a side project &mdash; Uno derives another
+        key from the same seed. One backup phrase still covers everything.
+      </p>
+      <p>
+        Already on Nostr? Import your existing <code>nsec</code> as a first-class
+        identity. Your followers, your reputation, all preserved. Add new
+        derived identities alongside it.
+      </p>
+
+      <h2>Signing without the browser extension</h2>
+      <p>
+        Today, using Nostr on the web means installing a browser extension that
+        holds your keys, or pasting an <code>nsec</code> into a website and praying.
+        Both options are terrible.
+      </p>
+      <p>
+        Uno is a NIP-46 remote signer. Your phone holds the keys. When a website
+        wants to act as you, it shows up in Uno as a pending request: <em>"X wants
+        to post as your Work identity. Approve?"</em> You tap yes. The website
+        never touches your key.
+      </p>
+      <p>
+        This is what cryptographic identity is supposed to feel like.
+      </p>
+
+      <h2>Where this goes</h2>
+      <p>
+        We're building the on-ramp for everyone Nostr lost in the first ten
+        minutes. The teenager who wants a private account away from family. The
+        professional who needs a clean separation between work and weekend. The
+        activist whose anonymous identity actually has to be anonymous.
+      </p>
+      <p>
+        Multi-identity isn't a feature. It's a way of being on the internet that
+        finally matches how you already live.
+      </p>
+    </div>
+
+    <div class="mt-12 flex flex-wrap gap-3">
+      <a href="https://nostr.uno" class="btn-primary">Open Uno</a>
+      <a href="/apps" class="btn-secondary">See the ecosystem</a>
+    </div>
+  </article>
+</BaseLayout>

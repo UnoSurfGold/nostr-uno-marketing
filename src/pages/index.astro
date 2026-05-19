@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const apps = [
+  {
+    name: 'TNR',
+    tagline: 'Civic identity for the territorial network.',
+    href: 'https://tnr.gold',
+    comingSoon: false,
+  },
+  {
+    name: 'nostr.surf',
+    tagline: 'Discovery feed for the Nostr ecosystem.',
+    href: 'https://nostr.surf',
+    comingSoon: false,
+  },
+  {
+    name: 'nostr.gold',
+    tagline: 'Premium identity services and Lightning.',
+    href: 'https://nostr.gold',
+    comingSoon: false,
+  },
+  {
+    name: 'Signstr',
+    tagline: 'Sign documents with your Nostr identity.',
+    href: '#',
+    comingSoon: true,
+  },
+];
+---
+
+<BaseLayout
+  title="Nostr Uno — Be multiple people on the new internet."
+  description="Cryptographic identity that's actually usable. One seed, many selves. NIP-46 signer for Nostr apps."
+  identity="rotate"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="hero-glow"></div>
+    <div class="relative mx-auto max-w-5xl px-6 pt-24 pb-20 md:pt-32 md:pb-28 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)] text-xs text-[var(--muted-foreground)] mb-8">
+        <span class="w-1.5 h-1.5 rounded-full" style="background: var(--identity-color)"></span>
+        The Apollo moment for Nostr identity
+      </div>
+      <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-balance leading-[1.05]">
+        Be <span style="color: var(--identity-color)">multiple people</span><br />
+        on the new internet.
+      </h1>
+      <p class="mt-7 max-w-2xl mx-auto text-lg md:text-xl text-[var(--muted-foreground)] leading-relaxed">
+        Uno is a Nostr identity manager that treats your selves as first-class citizens.
+        One seed phrase generates every identity you'll ever need &mdash; work, social, anon, whatever you become next.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="https://nostr.uno" class="btn-primary" data-cta="hero-open">
+          Open Uno
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="/why-uno" class="btn-secondary">Read the story</a>
+      </div>
+      <p class="mt-6 text-xs text-[var(--muted-foreground)]">
+        iOS &middot; Android &middot; PWA &nbsp;&middot;&nbsp; Free and open source
+      </p>
+    </div>
+  </section>
+
+  <!-- Three-up value props -->
+  <section class="mx-auto max-w-6xl px-6 py-16 grid gap-6 md:grid-cols-3">
+    <div class="card">
+      <div class="w-9 h-9 rounded-lg mb-4 grid place-items-center" style="background: var(--identity-tint); color: var(--identity-color)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="6" cy="6" r="3" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-base mb-2">Many selves, one home</h3>
+      <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+        Switch between Social, Work, Anon, and Dev identities in one swipe.
+        Each looks and feels distinct &mdash; because you are.
+      </p>
+    </div>
+    <div class="card">
+      <div class="w-9 h-9 rounded-lg mb-4 grid place-items-center" style="background: var(--identity-tint); color: var(--identity-color)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M9 2v14M3 6l6-4 6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-base mb-2">Your keys never leave</h3>
+      <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+        Sign for any Nostr app over NIP-46. Your phone is the signer.
+        Encrypted on-device. Backed up only by you.
+      </p>
+    </div>
+    <div class="card">
+      <div class="w-9 h-9 rounded-lg mb-4 grid place-items-center" style="background: var(--identity-tint); color: var(--identity-color)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+          <rect x="10" y="2" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+          <rect x="2" y="10" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+          <rect x="10" y="10" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-base mb-2">Discovery, not directory</h3>
+      <p class="text-sm text-[var(--muted-foreground)] leading-relaxed">
+        Apps surface contextually. Social identity gets feed apps. Work identity gets tools.
+        Like Alby's first app tiles &mdash; but smarter.
+      </p>
+    </div>
+  </section>
+
+  <!-- Apollo moment narrative -->
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-8 text-balance">
+      The "WRITE THIS DOWN NOW" ceremony killed Nostr's growth.
+    </h2>
+    <div class="prose-marketing">
+      <p>
+        Most people who try Nostr quit within ten minutes &mdash; not because the
+        protocol is wrong, but because the onboarding hands you twelve words and
+        a panic attack.
+      </p>
+      <p>
+        Uno fixes that. We generate your first identity silently. You name it,
+        pick a vibe, and start exploring apps. The seed phrase is there when
+        you're ready &mdash; in Settings, calm and labeled, not a ceremony.
+      </p>
+      <p>
+        And once you're in, you'll discover the real superpower of Nostr:
+        <strong>you can be more than one person.</strong> Your work account doesn't
+        have to know your weekend takes. Your anon project doesn't have to know
+        about your day job. Same seed, different lives.
+      </p>
+    </div>
+    <div class="mt-10 flex gap-3">
+      <a href="/why-uno" class="btn-secondary">The full story</a>
+      <a href="https://nostr.uno" class="btn-primary">Try it free</a>
+    </div>
+  </section>
+
+  <!-- Ecosystem teaser -->
+  <section class="mx-auto max-w-6xl px-6 py-16 border-t border-[var(--border)]">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <span class="badge-powered mb-3">Ecosystem</span>
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mt-3">Apps that speak Uno.</h2>
+      </div>
+      <a href="/apps" class="hidden md:inline-flex text-sm link-accent">See all apps &rarr;</a>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {apps.map((app) => (
+        <a
+          href={app.href}
+          class="card block"
+          target={app.comingSoon ? undefined : '_blank'}
+          rel={app.comingSoon ? undefined : 'noopener'}
+          data-coming-soon={app.comingSoon ? 'true' : undefined}
+        >
+          <div class="font-semibold mb-1">{app.name}</div>
+          <p class="text-sm text-[var(--muted-foreground)]">{app.tagline}</p>
+        </a>
+      ))}
+    </div>
+    <div class="mt-6 md:hidden">
+      <a href="/apps" class="text-sm link-accent">See all apps &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
+      Ready to become more than one person?
+    </h2>
+    <p class="mt-5 text-[var(--muted-foreground)]">
+      Free. Open source. Your keys never leave your device.
+    </p>
+    <div class="mt-8">
+      <a href="https://nostr.uno" class="btn-primary text-base px-6 py-3" data-cta="footer-open">
+        Open Uno
+      </a>
+    </div>
+  </section>
+</BaseLayout>
