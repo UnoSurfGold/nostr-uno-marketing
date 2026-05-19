@@ -1,0 +1,14 @@
+{
+  "names": {
+    "_": "8702178e8b264b78bc32d51b6bf22a1e3ac2e545f78240ebf1a5a8aad92f1c8f",
+    "support": "8702178e8b264b78bc32d51b6bf22a1e3ac2e545f78240ebf1a5a8aad92f1c8f",
+    "bowz": "8702178e8b264b78bc32d51b6bf22a1e3ac2e545f78240ebf1a5a8aad92f1c8f"
+  },
+  "relays": {
+    "8702178e8b264b78bc32d51b6bf22a1e3ac2e545f78240ebf1a5a8aad92f1c8f": [
+      "wss://relay.damus.io",
+      "wss://relay.primal.net",
+      "wss://nos.lol"
+    ]
+  }
+}

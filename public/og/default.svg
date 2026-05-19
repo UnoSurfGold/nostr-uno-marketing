@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="oklch(70% 0.18 55 / 0.35)" />
+      <stop offset="100%" stop-color="oklch(15% 0 0)" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="oklch(15% 0 0)" />
+  <rect width="1200" height="630" fill="url(#g)" />
+  <g transform="translate(80, 80)">
+    <circle cx="34" cy="34" r="32" fill="oklch(70% 0.18 55)" />
+    <text x="34" y="46" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="34" font-weight="700" fill="oklch(15% 0 0)">U</text>
+    <text x="88" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="600" fill="#fff">Nostr Uno</text>
+  </g>
+  <text x="80" y="340" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="78" font-weight="700" fill="#fff">Be multiple people</text>
+  <text x="80" y="430" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="78" font-weight="700" fill="oklch(70% 0.18 55)">on the new internet.</text>
+  <text x="80" y="510" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="400" fill="oklch(75% 0.01 90)">Cryptographic identity that's actually usable.</text>
+  <text x="80" y="560" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="500" fill="oklch(75% 0.01 90)">nostr.uno</text>
+</svg>

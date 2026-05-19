@@ -1,0 +1,20 @@
+# Cloudflare Pages headers — security + caching
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+
+# NIP-05 spec requires CORS-open .well-known/nostr.json
+/.well-known/nostr.json
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json
+
+/og/*
+  Cache-Control: public, max-age=86400
+
+/press/*
+  Cache-Control: public, max-age=86400
+
+/*.svg
+  Cache-Control: public, max-age=86400
